@@ -31,7 +31,6 @@ pass
 # Step 4 - sample_random_action
 def sample_random_action(action_space):
      return int(action_space.sample())
-pass
 
 # Step 5 - should_explore
 def should_explore(epsilon, rng):
@@ -148,10 +147,10 @@ def train_q_learning(
     env.action_space.seed(seed)
     env.reset(seed=seed)
 
-    q_table = np.zeros(
-        (env.observation_space.n, env.action_space.n),
-        dtype=float,
-    )
+    q_table = init_q_table(
+    env.observation_space.n,
+    env.action_space.n,
+)
 
     episode_returns = []
 
